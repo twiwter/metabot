@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "meta-game-372218",
-  "private_key_id": PRIVAT_KEY_ID,
-  "private_key": PRIVAT_KEY,
+  "private_key_id": "PRIVAT_KEY_ID",
+  "private_key": "PRIVAT_KEY",
   "client_email": "account@meta-game-372218.iam.gserviceaccount.com",
   "client_id": "103382247919526018162",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",

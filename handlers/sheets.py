@@ -3,11 +3,12 @@ import googleapiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 from googleapiclient.http import MediaFileUpload
+import os
 
 
 def send_values_to_table(table_name, operation, score, link="", amount=""):
     CREDENTIALS_FILE = "handlers/creds.json"
-    spreadsheet_id = spreadsheet_id
+    spreadsheet_id = os.environ.get("spreadsheet_id")
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         CREDENTIALS_FILE,
