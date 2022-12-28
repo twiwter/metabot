@@ -1,1 +1,2 @@
-BOT_TOKEN=BOT_TOKEN
+import os
+BOT_TOKEN=os.environ("BOT_TOKEN")
