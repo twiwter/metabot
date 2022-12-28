@@ -7,7 +7,7 @@ from googleapiclient.http import MediaFileUpload
 
 def send_values_to_table(table_name, operation, score, link="", amount=""):
     CREDENTIALS_FILE = "handlers/creds.json"
-    spreadsheet_id = "1jdJtxnBDPWd-boK_urBHnkdMACO6MdDMsXmfP2fPgAk"
+    spreadsheet_id = spreadsheet_id
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         CREDENTIALS_FILE,
