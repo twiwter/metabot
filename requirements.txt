@@ -1,5 +1,5 @@
 aiogram==2.23.1
-asyncio-3.4.3
+asyncio==3.4.3
 async-timeout==4.0.2
 certifi==2022.12.7
 dispatcher==1.0
