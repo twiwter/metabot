@@ -72,15 +72,13 @@ async def process_stories(message: types.Message, state: FSMContext):
     operation_name = "сторис"
     score = 1
 
-    print(message)
-
     database.add_operation(user_id, "stories", score)
     data = database.get_user_information(user_id)
     database.update_score(user_id, 1)
 
     table_name = f"{data[2]}_{user_id}"
 
-    send_values_to_table(table_name, operation_name, score)
+    # send_values_to_table(table_name, operation_name, score)
 
     await message.answer("Фото отримано! ✅ \n\nТобі нараховується 1 бал! 🎖")
     await state.finish()
