@@ -4,16 +4,18 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 from googleapiclient.http import MediaFileUpload
 import os
+import json
 
 
 def send_values_to_table(table_name, operation, score, link="", amount=""):
-    CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+    credentials_json = json.loads(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
     spreadsheet_id = os.environ.get("spreadsheet_id")
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        CREDENTIALS_FILE,
-        ["https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive"])
+    credentials = ServiceAccountCredentials.from_json(credentials_json)
+    # credentials = ServiceAccountCredentials.from_json(
+    #     CREDENTIALS_FILE,
+    #     ["https://www.googleapis.com/auth/spreadsheets",
+    #     "https://www.googleapis.com/auth/drive"])
     httpAuth = credentials.authorize(httplib2.Http())
     service = googleapiclient.discovery.build("sheets", "v4", http = httpAuth)
 
