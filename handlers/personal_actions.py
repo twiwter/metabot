@@ -70,6 +70,8 @@ async def process_confrontation_command(message: types.Message):
             clients_count_red = database.get_clients_count_team("🔴 Криптопанк")
             consults_count_red = database.get_consults_count_team("🔴 Криптопанк")
 
+            text = ""
+
             last_operation = database.get_last_operation()
 
             if (last_operation != None):
@@ -94,7 +96,7 @@ async def process_confrontation_command(message: types.Message):
                 consult_blue=consults_count_blue,
                 client_red=clients_count_red,
                 consult_red=consults_count_red,
-                last_operation_text=str(text)
+                last_operation_text=text
             ), parse_mode="Markdown")
 
     else:
