@@ -14,10 +14,11 @@ from handlers.sheets import send_values_to_table
 
 from handlers.states.UsersStates import Stories, Client, Consult, SendOut
 
-database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
+
 
 @dp.message_handler(content_types="text")
 async def user_messages(message: types.Message):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id != 447002854 and message.from_user.id != 712140726):
             text = re.sub(r'[^\w\s]','', message.text).lower()
@@ -69,6 +70,7 @@ async def process_content_type_invalid(message: types.Message):
 
 @dp.message_handler(content_types=["photo"], state=Stories.photo)
 async def process_stories(message: types.Message, state: FSMContext):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     user_id = message.from_user.id
     operation_name = "сторис"
     score = 1
@@ -92,6 +94,7 @@ async def process_content_invalid(message: types.Message):
 @dp.message_handler(state=SendOut.count)
 async def process_count_send_out(message: types.Message, state: FSMContext):
     count = int(message.text)
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if (count < 10):
         await message.answer("Це дуже мало...")
     else:
@@ -130,6 +133,7 @@ async def process_content_invalid(message: types.Message):
 
 @dp.message_handler(state=Client.amount)
 async def process_client_amount(message: types.Message, state: FSMContext):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     async with state.proxy() as data:
         data['amount'] = int(message.text)
 
@@ -185,6 +189,7 @@ async def process_content_invalid(message: types.Message):
 
 @dp.message_handler(state=Consult.amount)
 async def process_consult_amount(message: types.Message, state: FSMContext):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     async with state.proxy() as data:
         data['amount'] = int(message.text)
 

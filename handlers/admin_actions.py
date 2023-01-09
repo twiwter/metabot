@@ -9,10 +9,11 @@ import os
 
 from handlers.states.AdminStates import AdminMessagesStates
 
-database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
+
 
 @dp.message_handler(commands=['get_id'])
 async def process_start_command(message: types.Message):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if (message.from_user.id == 423579650):
         req = database.get_all_users()
         text=""
@@ -38,6 +39,7 @@ async def process_start_command(message: types.Message):
 @dp.message_handler(commands=['teams'])
 async def process_start_command(message: types.Message):
     """Get all infos about teams"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if (message.from_user.id in [423579650, 447002854, 712140726]):
         team_blue = database.get_all_users_team_info("🧢 Аватар")
         team_red  = database.get_all_users_team_info("🔴 Криптопанк")
@@ -67,6 +69,7 @@ async def cancel_handler(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=AdminMessagesStates.message_warning)
 async def process_name(message: types.Message, state: FSMContext):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     """Process message warning"""
     users_id = database.get_all_users_id()
     for user_id in users_id:
@@ -80,6 +83,7 @@ async def process_name(message: types.Message, state: FSMContext):
 @dp.message_handler(state=AdminMessagesStates.message_information)
 async def process_name(message: types.Message, state: FSMContext):
     """Process message information"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
 
     users_id = database.get_all_users_id()
     for user_id in users_id:

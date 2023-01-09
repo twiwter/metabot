@@ -11,12 +11,10 @@ from aiogram.dispatcher import FSMContext
 from handlers.states.UsersStates import Help
 import os
 
-
-database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
-
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
     """Getting Started"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         user_information = database.get_user_information(message.from_user.id)
         await message.answer(pa.start.substitute(name=user_information[2]))
@@ -26,6 +24,7 @@ async def process_start_command(message: types.Message):
 @dp.message_handler(commands=['info'])
 async def process_information_command(message: types.Message):
     """Informing the user"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         await message.answer(pa.info, parse_mode="Markdown")
     else:
@@ -34,6 +33,7 @@ async def process_information_command(message: types.Message):
 @dp.message_handler(commands=['profile'])
 async def process_profile_command(message: types.Message):
     """Displaying the user profile"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("Ти батько, навіщо тобі дивитися свій профіль?)")
@@ -55,6 +55,7 @@ async def process_profile_command(message: types.Message):
 @dp.message_handler(commands=['confrontation'])
 async def process_confrontation_command(message: types.Message):
     """Print all info about both teams"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("Це тобі не потрібно )")
@@ -102,6 +103,7 @@ async def process_confrontation_command(message: types.Message):
 @dp.message_handler(commands=['intelligence'])
 async def process_intelligence_command(message: types.Message):
     """Print all info about team"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("І це тобі теж не потрібно )")
@@ -123,6 +125,7 @@ async def process_intelligence_command(message: types.Message):
 @dp.message_handler(commands=['help'])
 async def process_intelligence_command(message: types.Message):
     """Contacting Support"""
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id != 447002854):
             await message.reply("Йой, вийшла помилка ... Напиши що сталося?")
@@ -146,6 +149,7 @@ async def cancel_handler(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=Help.message_help)
 async def process_name(message: types.Message, state: FSMContext):
+    database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     user = database.get_user_information(message.from_user.id)
     name = user[2]
     chat_id = user[1]
