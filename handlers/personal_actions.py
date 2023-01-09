@@ -69,12 +69,10 @@ async def process_confrontation_command(message: types.Message):
             score_red = database.get_score_team("🔴 Криптопанк")
             clients_count_red = database.get_clients_count_team("🔴 Криптопанк")
             consults_count_red = database.get_consults_count_team("🔴 Криптопанк")
-
-            text = ""
-
+            
             last_operation = database.get_last_operation()
 
-            if (last_operation != None):
+            if (last_operation != []):
                 user_info = database.get_user_information(last_operation[1])
                 operation = last_operation[2]
 
