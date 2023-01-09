@@ -48,5 +48,3 @@ def send_values_to_table(table_name, operation, score, link="", amount=""):
         ]
         }
     ).execute()
-
-send_values_to_table("Олександр_423579650", "operation", 1, link="", amount="")
