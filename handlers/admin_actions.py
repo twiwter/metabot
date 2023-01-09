@@ -5,19 +5,11 @@ from aiogram.dispatcher import FSMContext
 from dispatcher import dp, bot
 import config
 from db import BotDB
+import os
 
 from handlers.states.AdminStates import AdminMessagesStates
 
-database = BotDB("database.db")
-
-@dp.message_handler(commands=['do_sql'])
-async def process_start_command(message: types.Message):
-    if (message.from_user.id == 423579650):
-        req = database.do_sql(message.text[8:])
-        if "SELECT" in message.text[8:]:
-            await message.answer(req)
-        else:
-            await message.reply("Done!")
+database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
 
 @dp.message_handler(commands=['get_id'])
 async def process_start_command(message: types.Message):

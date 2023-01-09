@@ -7,7 +7,7 @@ import os
 
 
 def send_values_to_table(table_name, operation, score, link="", amount=""):
-    CREDENTIALS_FILE = "handlers/creds.json"
+    CREDENTIALS_FILE = os.environ.get("GOOGLE_CREDITIONALS")
     spreadsheet_id = os.environ.get("spreadsheet_id")
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
@@ -48,3 +48,5 @@ def send_values_to_table(table_name, operation, score, link="", amount=""):
         ]
         }
     ).execute()
+
+send_values_to_table("Олександр_423579650", "operation", 1, link="", amount="")

@@ -8,12 +8,13 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher import FSMContext
 import re
+import os
 
 from handlers.sheets import send_values_to_table
 
 from handlers.states.UsersStates import Stories, Client, Consult, SendOut
 
-database = BotDB("database.db")
+database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
 
 @dp.message_handler(content_types="text")
 async def user_messages(message: types.Message):

@@ -9,9 +9,10 @@ from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher import FSMContext
 
 from handlers.states.UsersStates import Help
+import os
 
 
-database = BotDB("database.db")
+database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
 
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
