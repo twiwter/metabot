@@ -108,7 +108,7 @@ async def process_count_send_out(message: types.Message, state: FSMContext):
         data = database.get_user_information(user_id)
 
         table_name = f"{data[2]}_{user_id}"
-        send_values_to_table(table_name, operation_name, score)
+        # send_values_to_table(table_name, operation_name, score)
 
         await message.answer(f"Отримано! ✅ \n\nТобі нараховується {score} бал! 🎖")
 
@@ -162,7 +162,7 @@ async def process_client_amount(message: types.Message, state: FSMContext):
     link = str(data["link"])
     amount = int(data["amount"])
 
-    send_values_to_table(table_name, operation_name, score, link, amount)
+    # send_values_to_table(table_name, operation_name, score, link, amount)
 
     await message.answer(f"Отримано! ✅ \n\nТобі нараховується {score} балів! 🏆")
 
@@ -220,7 +220,7 @@ async def process_consult_amount(message: types.Message, state: FSMContext):
     link = str(data["link"])
     amount = int(data["amount"])
 
-    send_values_to_table(table_name, operation_name, score, link, amount)
+    # send_values_to_table(table_name, operation_name, score, link, amount)
 
     await message.answer(f"Отримано! ✅ \n\nТобі нараховується {score} балів! 🏆")
 
