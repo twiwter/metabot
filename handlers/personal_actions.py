@@ -69,7 +69,7 @@ async def process_confrontation_command(message: types.Message):
             score_red = database.get_score_team("🔴 Криптопанк")
             clients_count_red = database.get_clients_count_team("🔴 Криптопанк")
             consults_count_red = database.get_consults_count_team("🔴 Криптопанк")
-            
+
             last_operation = database.get_last_operation()
 
             if (last_operation != []):
@@ -96,6 +96,10 @@ async def process_confrontation_command(message: types.Message):
                 consult_red=consults_count_red,
                 last_operation_text=text
             ), parse_mode="Markdown")
+
+
+
+            print(last_operation)
 
     else:
         await message.reply("Вибачай, друже, але тобі цей бот недоступний )")
