@@ -4,9 +4,7 @@ start = Template("Привіт, $name! 👋 \nЯ бот для курсу МЕТ
 
 profile = Template("👤 $name\n$team_name\n\n🎖 Кількість балів: $score\n\n💸 Клієнтів: $clients_count\n🥸 Консультацій: $consults_count")
 
-confrontation_text = Template("🧢 Аватари $score_blue:$score_red Криптопанки 🔴\n\nУ синіх: $client_blue - клієнтів і $consult_blue - консультації\nУ червоних: $client_red - клієнтів і $consult_red - консультації\n\nОстання подія: $last_operation")
-
-last_operation_storie = Template("")
+confrontation_text = Template("🧢 Аватари $score_blue:$score_red Криптопанки 🔴\n\nУ синіх: $client_blue - клієнтів і $consult_blue - консультації\nУ червоних: $client_red - клієнтів і $consult_red - консультації\n\nОстання подія: $last_operation_text")
 
 
 info = '''*Дії, за які ти отримуєш бали*

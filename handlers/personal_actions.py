@@ -94,7 +94,7 @@ async def process_confrontation_command(message: types.Message):
                 consult_blue=consults_count_blue,
                 client_red=clients_count_red,
                 consult_red=consults_count_red,
-                last_operation=text
+                last_operation_text=str(text)
             ), parse_mode="Markdown")
 
     else:
