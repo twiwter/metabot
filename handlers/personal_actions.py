@@ -71,7 +71,7 @@ async def process_confrontation_command(message: types.Message):
             consults_count_red = database.get_consults_count_team("🔴 Криптопанк")
 
             last_operation = database.get_last_operation()
-            await message.answer(last_operation)
+            await message.answer(type(last_operation))
 
             if (last_operation != []):
                 user_info = database.get_user_information(last_operation[1])
