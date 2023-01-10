@@ -183,7 +183,7 @@ async def process_consult_link(message: types.Message, state: FSMContext):
 async def process_content_invalid(message: types.Message):
     await message.reply("Надіслано неправильну суму! Відправ ще раз!")
 
-@dp.message_handler(lambda message: int(message.text) <= 0, state=Consult.amount)
+@dp.message_handler(lambda message: int(message.text) < 0, state=Consult.amount)
 async def process_content_invalid(message: types.Message):
     await message.reply("Надіслано неправильну суму! Відправ ще раз!")
 
