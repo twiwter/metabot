@@ -11,14 +11,14 @@ def send_values_to_table(table_name, operation, score, link="", amount=""):
     CREDENTIALS = os.environ["GOOGLE_CREDITIONALS"]
     spreadsheet_id = os.environ.get("spreadsheet_id")
 
-    print(json.load(CREDENTIALS))
+    print(type(json.loads(CREDENTIALS)))
 
     # credentials = ServiceAccountCredentials.from_json(credentials_json)
     # credentials = ServiceAccountCredentials.from_json_keyfile_name(
     #     CREDENTIALS_FILE,
     #     ["https://www.googleapis.com/auth/spreadsheets",
     #     "https://www.googleapis.com/auth/drive"])
-    credentials = ServiceAccountCredentials.from_json(json.load(CREDENTIALS))
+    credentials = ServiceAccountCredentials.from_json(json.loads(CREDENTIALS))
     httpAuth = credentials.authorize(httplib2.Http())
     service = googleapiclient.discovery.build("sheets", "v4", http = httpAuth)
 
