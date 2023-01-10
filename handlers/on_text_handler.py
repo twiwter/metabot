@@ -162,7 +162,7 @@ async def process_client_amount(message: types.Message, state: FSMContext):
     link = str(data["link"])
     amount = int(data["amount"])
 
-    # send_values_to_table(table_name, operation_name, score, link, amount)
+    send_values_to_table(table_name, operation_name, score, link, amount)
 
     await message.answer(f"Отримано! ✅ \n\nТобі нараховується {score} балів! 🏆")
 
