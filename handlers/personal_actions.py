@@ -37,7 +37,7 @@ async def process_profile_command(message: types.Message):
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("Ти батько, навіщо тобі дивитися свій профіль?)")
-        elif(message.from_user.id == 7121407261):
+        elif(message.from_user.id == 712140726):
             await message.answer("Не треба так ...")
         else:
             profile_data = database.get_user_information(message.from_user.id)
@@ -59,7 +59,7 @@ async def process_confrontation_command(message: types.Message):
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("Це тобі не потрібно )")
-        elif(message.from_user.id == 7121407261):
+        elif(message.from_user.id == 712140726):
             await message.answer("Не треба так ...")
         else:
             score_blue = database.get_score_team("🧢 Аватар")
@@ -107,7 +107,7 @@ async def process_intelligence_command(message: types.Message):
     if(database.user_exist(message.from_user.id)):
         if(message.from_user.id == 447002854):
             await message.answer("І це тобі теж не потрібно )")
-        elif(message.from_user.id == 7121407261):
+        elif(message.from_user.id == 712140726):
             await message.answer("Не треба так ...")
         else:
             user_info = database.get_user_information(message.from_user.id)
