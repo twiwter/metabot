@@ -11,7 +11,7 @@ def send_values_to_table(table_name, operation, score, link="", amount=""):
     CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
     spreadsheet_id = os.environ.get("spreadsheet_id")
 
-    print(CREDENTIALS_FILE)
+    print(json.load(CREDENTIALS_FILE))
 
     # credentials = ServiceAccountCredentials.from_json(credentials_json)
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
