@@ -81,7 +81,7 @@ async def process_stories(message: types.Message, state: FSMContext):
 
     table_name = f"{data[2]}_{user_id}"
 
-    # send_values_to_table(table_name, operation_name, score)
+    send_values_to_table(table_name, operation_name, score)
 
     await message.answer("Фото отримано! ✅ \n\nТобі нараховується 1 бал! 🎖")
     await state.finish()
@@ -149,7 +149,7 @@ async def process_client_amount(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     operation_name = "клиент"
 
-    # print(data) # FSMContextProxy state = 'Client:amount', data = {'link': 'посилання', 'amount': 200}, closed = True
+    print(data) # FSMContextProxy state = 'Client:amount', data = {'link': 'посилання', 'amount': 200}, closed = True
 
     database.add_operation(user_id, "client", score, data["link"], data["amount"])
     database.update_score(user_id, score)
@@ -220,7 +220,7 @@ async def process_consult_amount(message: types.Message, state: FSMContext):
     link = str(data["link"])
     amount = int(data["amount"])
 
-    # send_values_to_table(table_name, operation_name, score, link, amount)
+    send_values_to_table(table_name, operation_name, score, link, amount)
 
     await message.answer(f"Отримано! ✅ \n\nТобі нараховується {score} балів! 🏆")
 
