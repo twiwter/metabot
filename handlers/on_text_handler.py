@@ -20,7 +20,7 @@ from handlers.states.UsersStates import Stories, Client, Consult, SendOut
 async def user_messages(message: types.Message):
     database = BotDB(os.environ.get("HOST"), os.environ.get("USER"), os.environ.get("PASSWORD"), os.environ.get("DB"))
     if(database.user_exist(message.from_user.id)):
-        if(message.from_user.id != 447002854 and message.from_user.id != 712140726):
+        if(message.from_user.id != 447002854 and message.from_user.id != 7121407261):
             text = re.sub(r'[^\w\s]','', message.text).lower()
             keys = ["сторіс", "клієнт", "консультація", "консультацію", "клієнтa", "розсилка", "розсилку"]
 
